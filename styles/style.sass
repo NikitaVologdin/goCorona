@@ -1,4 +1,5 @@
 @import _variables
+@import _mixins
 
 .wrapper
     display: flex
@@ -19,14 +20,20 @@
     max-height: 114px
     &__container
         display: flex
-        justify-content: space-between
         align-items: center
         padding: 39px 0
+    &__nav
+        margin-right: 25px
     &__button
         background-color: #4285F4
+    &__burger
+        margin-left: 10px
 
 .nav
-    .nav__link
+    display: flex
+    justify-content: flex-end
+    flex: 1 1 auto
+    &__link
         color: #000
         font-weight: 700
         font-size: 10px
@@ -50,3 +57,71 @@
     letter-spacing: 0.14em
     border-radius: 5px
     font-size: 10px
+    margin-left: auto
+
+.burger
+    width: 30px
+    height: 18px
+    cursor: pointer
+    position: relative
+    display: none
+    &::before, &::after
+        content: ''
+        height: 1.7px
+        width: 100%
+        background-color: #000
+        display: block
+        position: absolute
+
+    &::before
+        top: 0px
+    &::after
+        bottom: 0px
+
+    &__line
+        height: 1.7px
+        width: 100%
+        line-height: 38px
+        background-color: #000
+        display: block
+        position: absolute
+        top: 8px
+    &_active
+        &::before
+            transform: rotate(45deg)
+            top: 10px
+        &::after
+            transform: rotate(315deg)
+            bottom: 7px
+
+@media (max-width: 768px)
+    .burger
+        display: block
+    .header__container
+        position: relative
+        z-index: 5
+        padding: 10px 10px
+    .header__nav
+        position: absolute
+        top: 0
+        left: -500px
+    .header__nav_active
+        left: 0
+    .nav
+        width: 100vw
+        // height: 100vh
+        z-index: -1
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        margin-top: 75px
+        transition: left 0.3s ease 0s
+        &__link
+            padding: 10px
+            margin-bottom: 20px
+            font-size: 2.5em
+            margin-right: 0
+
+.display_none
+    display: none
