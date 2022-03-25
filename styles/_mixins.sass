@@ -1,0 +1,22 @@
+@import '_variables.sass'
+
+@mixin small()
+    @media (min-width: 576px)
+        
+
+@mixin medium()
+    @media (min-width: 768px)
+
+
+@mixin large()
+    @media (min-width: 992px)
+
+
+@mixin extra()
+    @media (min-width: 1200px)
+
+
+@mixin adaptive-font($pcSize, $mobSize) 
+    $addSize: $pcSize - $mobSize
+    $maxWidth: $maxWidth - 320
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}))
